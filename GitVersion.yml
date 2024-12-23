@@ -1,33 +1,50 @@
+assembly-versioning-scheme: MajorMinorPatch
 mode: ContinuousDelivery
 tag-prefix: "[vV]"
-increment: Inherit
+increment: Patch
 major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
 no-bump-message: '\+semver:\s?(none|skip)'
+commit-date-format: 'yy.MM.dd'
+update-build-number: true
+next-version: 24.12.0
+
 branches:
   main:
     regex: ^main$
     tag: ''
     increment: Patch
     is-release-branch: true
-    prevent-increment-of-merged-branch-version: true
+    prevent-increment-of-merged-branch-version: false
+    track-merge-target: true
+    source-branches: []
 
   develop:
     regex: ^dev(elop)?$
-    tag: debug
-    increment: Minor
+    tag: dev
+    increment: Patch
+    track-merge-target: true
+    tracks-release-branches: true
+    source-branches: ['main']
 
   feature:
     regex: ^features?[/-]
-    tag: debug
-    increment: Inherit
+    tag: dev
+    increment: Patch
+    track-merge-target: true
+    tracks-release-branches: true
+    source-branches: ['main']
 
   hotfix:
     regex: ^hotfix[/-]
-    tag: debug
+    tag: dev
     increment: Patch
+    track-merge-target: true
+    tracks-release-branches: true
+    source-branches: ['main']
 
   pull-request:
-    tag: debug
+    tag: dev
     increment: Inherit
+    track-merge-target: true
