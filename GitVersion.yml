@@ -1,4 +1,6 @@
-assembly-versioning-scheme: MajorMinorPatch
+assembly-versioning-scheme: MajorMinorPatchTag
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{env:BUILD_NUMBER ?? CommitsSinceVersionSource}'
+assembly-informational-format: '{SemVer}+{BranchName}.{ShortSha}'
 mode: ContinuousDeployment
 tag-prefix: "[vV]"
 increment: Inherit
