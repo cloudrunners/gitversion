@@ -1,12 +1,14 @@
-assembly-versioning-scheme: MajorMinorPatch
-mode: ContinuousDelivery
+assembly-versioning-scheme: MajorMinorPatchTag
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{env:BUILD_NUMBER ?? CommitsSinceVersionSource}'
+assembly-informational-format: '{SemVer}+{BranchName}.{ShortSha}'
+mode: ContinuousDeployment
 tag-prefix: "[vV]"
 increment: Patch
 major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
 no-bump-message: '\+semver:\s?(none|skip)'
-commit-date-format: 'yy.MM.dd'
+commit-date-format: 'yyyy.MM.dd'
 update-build-number: true
 next-version: 24.12.0
 
@@ -14,7 +16,7 @@ branches:
   main:
     regex: ^main$
     tag: ''
-    increment: Patch
+    increment: Inherit
     is-release-branch: true
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
@@ -29,9 +31,9 @@ branches:
     source-branches: ['main']
 
   feature:
-    regex: ^features?[/-]
+    regex: ^features?[/-].+
     tag: dev
-    increment: Patch
+    increment: Minor
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
