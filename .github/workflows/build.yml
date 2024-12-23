@@ -18,11 +18,6 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
-    - name: Fetch all history
-      run: |
-        git fetch --prune --unshallow
-        git branch -r
-
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.10.2
       with:
