@@ -31,13 +31,17 @@ branches:
   feature:
     regex: ^features?[/-]
     tag: dev
-    increment: Inherit
-    source-branches: ['develop']
+    increment: Patch
+    track-merge-target: true
+    tracks-release-branches: true
+    source-branches: ['main']
 
   hotfix:
     regex: ^hotfix[/-]
     tag: dev
     increment: Patch
+    track-merge-target: true
+    tracks-release-branches: true
     source-branches: ['main']
 
   pull-request:
