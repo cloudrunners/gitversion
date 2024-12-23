@@ -25,9 +25,6 @@ jobs:
     - name: Determine Version
       uses: gittools/actions/gitversion/execute@v0.10.2
       id: gitversion
-      with:
-        useConfigFile: true
-        configFilePath: GitVersion.yml
 
     - name: Display Version
       run: |
