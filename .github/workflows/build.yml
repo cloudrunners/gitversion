@@ -3,7 +3,7 @@ name: Build and Version
 on:
   push:
     branches:
-      - '**'
+      - '**'  # This will match any branch
   pull_request:
     branches: [ main, master, develop, feature ]
 
@@ -12,24 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: AutoModality/action-clean@v1
-
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 0 # Required for GitVersion
 
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v3.1.1
+      uses: gittools/actions/gitversion/setup@v0
       with:
-        versionSpec: '6.0.x'
-        preferLatestVersion: true
+        versionSpec: '5.x'
 
     - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0
       id: gitversion
-      uses: gittools/actions/gitversion/execute@v3.1.1
-      with:
-        useConfigFile: true
-        configFilePath: './VersionConfig.yml'
 
     - name: Display Version
       run: |
