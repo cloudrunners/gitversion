@@ -1,4 +1,4 @@
-assembly-versioning-scheme: MajorMinorPatch
+assembly-versioning-scheme: MajorMinorPatchTag
 mode: ContinuousDelivery
 tag-prefix: "[vV]"
 increment: Patch
@@ -9,6 +9,7 @@ no-bump-message: '\+semver:\s?(none|skip)'
 commit-date-format: 'yy.MM.dd'
 update-build-number: true
 next-version: 24.12.0
+continuous-delivery-fallback-tag: ci
 
 branches:
   main:
@@ -19,6 +20,7 @@ branches:
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     source-branches: []
+    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}'
 
   develop:
     regex: ^dev(elop)?$
@@ -27,6 +29,7 @@ branches:
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
+    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
 
   feature:
     regex: ^features?[/-]
@@ -35,6 +38,7 @@ branches:
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
+    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
 
   hotfix:
     regex: ^hotfix[/-]
@@ -43,8 +47,10 @@ branches:
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
+    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
 
   pull-request:
     tag: dev
     increment: Inherit
     track-merge-target: true
+    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
