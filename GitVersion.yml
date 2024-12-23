@@ -1,16 +1,9 @@
-assembly-versioning-scheme: MajorMinorPatchTag
-assembly-file-versioning-format: '{Major}.{Minor}.{Patch}{BranchName}{CommitsSinceVersionSource}'
+version: 5.11.2
+assembly-versioning-scheme: MajorMinorPatch
 mode: ContinuousDeployment
 tag-prefix: "[vV]"
 increment: Patch
-major-version-bump-message: '\+semver:\s?(breaking|major)'
-minor-version-bump-message: '\+semver:\s?(feature|minor)'
-patch-version-bump-message: '\+semver:\s?(fix|patch)'
-no-bump-message: '\+semver:\s?(none|skip)'
-commit-date-format: 'yy.MM.dd'
-update-build-number: true
 next-version: 24.12.0
-continuous-delivery-fallback-tag: ci
 
 branches:
   main:
@@ -18,45 +11,30 @@ branches:
     tag: ''
     increment: Patch
     is-release-branch: true
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
     source-branches: []
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}'
-    label: ''
+    prevent-increment-of-merged-branch-version: true
 
   develop:
     regex: ^dev(elop)?$
-    tag: dev
+    tag: beta
     increment: Patch
-    track-merge-target: true
-    tracks-release-branches: true
     source-branches: ['main']
-    label: dev
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{CommitsSinceVersionSource}-dev'
+    track-merge-target: true
 
   feature:
     regex: ^features?[/-]
-    tag: dev
+    tag: alpha
     increment: Patch
+    source-branches: ['develop']
     track-merge-target: true
-    tracks-release-branches: true
-    source-branches: ['main']
-    label: dev
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{CommitsSinceVersionSource}-dev'
 
   hotfix:
     regex: ^hotfix[/-]
-    tag: dev
+    tag: beta
     increment: Patch
-    track-merge-target: true
-    tracks-release-branches: true
     source-branches: ['main']
-    label: dev
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{CommitsSinceVersionSource}-dev'
+    track-merge-target: true
 
   pull-request:
-    tag: dev
-    increment: Patch
-    track-merge-target: true
-    label: dev
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{CommitsSinceVersionSource}-dev'
+    tag: pr
+    increment: Inherit
