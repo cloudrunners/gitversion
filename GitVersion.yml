@@ -1,7 +1,7 @@
 assembly-versioning-scheme: MajorMinorPatch
-mode: ContinuousDelivery
+mode: ContinuousDeployment
 tag-prefix: "[vV]"
-increment: Patch
+increment: None
 major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
