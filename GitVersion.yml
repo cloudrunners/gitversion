@@ -1,4 +1,5 @@
 assembly-versioning-scheme: MajorMinorPatchTag
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}{BranchName}{CommitsSinceVersionSource}'
 mode: ContinuousDelivery
 tag-prefix: "[vV]"
 increment: Patch
@@ -20,7 +21,6 @@ branches:
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     source-branches: []
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}'
 
   develop:
     regex: ^dev(elop)?$
@@ -29,7 +29,6 @@ branches:
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
 
   feature:
     regex: ^features?[/-]
@@ -38,7 +37,6 @@ branches:
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
 
   hotfix:
     regex: ^hotfix[/-]
@@ -47,10 +45,8 @@ branches:
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
 
   pull-request:
     tag: dev
     increment: Inherit
     track-merge-target: true
-    assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{BuildMetaData}-dev'
