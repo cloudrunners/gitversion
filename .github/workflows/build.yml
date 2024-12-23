@@ -2,7 +2,8 @@ name: Build and Version
 
 on:
   push:
-    branches: [ main, master, develop, feature ]
+    branches:
+      - '**'  # This will match any branch
   pull_request:
     branches: [ main, master, develop, feature ]
 
