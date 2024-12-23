@@ -25,7 +25,8 @@ branches:
   develop:
     regex: ^dev(elop)?$
     tag: dev
-    increment: Patch
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
@@ -34,14 +35,16 @@ branches:
     regex: ^features?[/-].+
     tag: dev
     increment: Inherit
+    prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     tracks-release-branches: true
-    source-branches: ['main']
+    source-branches: ['develop']
 
   hotfix:
     regex: ^hotfix[/-]
     tag: dev
-    increment: Patch
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
@@ -49,4 +52,5 @@ branches:
   pull-request:
     tag: dev
     increment: Inherit
+    prevent-increment-of-merged-branch-version: false
     track-merge-target: true
