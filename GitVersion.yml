@@ -33,7 +33,7 @@ branches:
   feature:
     regex: ^features?[/-].+
     tag: dev
-    increment: Minor
+    increment: Inherit
     track-merge-target: true
     tracks-release-branches: true
     source-branches: ['main']
