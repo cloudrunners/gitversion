@@ -43,7 +43,7 @@ branches:
   hotfix:
     regex: ^hotfix[/-]
     tag: dev
-    increment: Inherit
+    increment: Patch
     prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     tracks-release-branches: true
