@@ -6,10 +6,8 @@ major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
 no-bump-message: '\+semver:\s?(none|skip)'
-commit-date-format: yy-MM-dd
-merge-message-formats: {}
+commit-date-format: yyyy-MM-dd
 update-build-number: true
-semantic-version-format: Strict
 
 branches:
   main:
@@ -28,22 +26,17 @@ branches:
 
   feature:
     regex: ^features?[/-]
+    mode: ContinuousDeployment
     tag: alpha
     increment: Inherit
     source-branches: ['develop']
 
   hotfix:
     regex: ^hotfix(es)?[/-]
-    tag: beta
+    mode: ContinuousDeployment
+    tag: rc
     increment: Patch
     source-branches: ['main']
-
-  pull-request:
-    mode: ContinuousDeployment
-    tag: dev
-    increment: Inherit
-    tag-number-pattern: '[/-](?<number>\d+)[-/]'
-    track-merge-target: true
 
 ignore:
   sha: []
