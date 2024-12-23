@@ -5,4 +5,31 @@ major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
 no-bump-message: '\+semver:\s?(none|skip)'
-branches: {}
+branches:
+  main:
+    regex: ^main$
+    tag: ''
+    increment: Patch
+    is-main-branch: true
+    is-release-branch: true
+    prevent-increment-of-merged-branch-version: true
+
+  develop:
+    regex: ^dev(elop)?$
+    tag: debug
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+
+  feature:
+    regex: ^features?[/-]
+    tag: debug
+    increment: Inherit
+
+  hotfix:
+    regex: ^hotfix[/-]
+    tag: debug
+    increment: Patch
+
+  pull-request:
+    tag: debug
+    increment: Inherit
