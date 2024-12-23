@@ -25,11 +25,13 @@ branches:
   develop:
     regex: ^dev(elop)?$
     mode: ContinuousDeployment
-    tag: dev
+    tag: alpha
     increment: Minor
+    prevent-increment-of-merged-branch-version: false
     track-merge-target: true
     tracks-release-branches: true
-    source-branches: ['main']
+    source-branches: ['main', 'master']
+    is-source-branch-for: ['feature', 'hotfix']
 
   feature:
     regex: ^features?[/-]

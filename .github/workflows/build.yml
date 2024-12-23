@@ -18,6 +18,12 @@ jobs:
         fetch-depth: 0
         fetch-tags: true
 
+    - name: Setup Git
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git fetch --prune --unshallow
+
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.10.2
       with:
