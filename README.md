@@ -5,3 +5,4 @@ linia 2
 
 linia 5
 linia 6
+linia 7
