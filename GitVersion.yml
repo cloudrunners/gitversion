@@ -42,12 +42,8 @@ branches:
 
   hotfix:
     regex: ^hotfix[/-]
-    tag: dev
-    increment: Inherit
-    prevent-increment-of-merged-branch-version: false
-    track-merge-target: true
-    tracks-release-branches: true
-    source-branches: ['main']
+    tag: debug
+    increment: Patch
 
   pull-request:
     tag: dev
